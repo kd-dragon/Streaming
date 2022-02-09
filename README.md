@@ -23,7 +23,7 @@ refered to red5 opensource (VOD)
 - put HLS binary to Redis
 From LIVE_Encoder
 
-> Redis Master Server Can push All Data to Replica Redis Server
+> Redis Master Server Can push All Data to Redis Replica Server
 
 - Client Request M3U8, TS File
 - Get M3U8, TS File From Redis Server ( serialize/deserialize an Object as Binary Data )
