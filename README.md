@@ -17,6 +17,7 @@ refered to red5 opensource (VOD)
 
 
 2) LIVE (HLS)
+
 [before]
 - FFMPEG Encoding Job ( RTSP/RTMP Stream -> M3U8,TS )
 - put HLS binary to Redis
