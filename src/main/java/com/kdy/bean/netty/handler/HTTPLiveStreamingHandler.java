@@ -49,7 +49,6 @@ public class HTTPLiveStreamingHandler extends SimpleChannelInboundHandler<FullHt
 		
 		FullHttpResponse res = null;
 		String uri = req.uri();
-		//log.warn("[URI] " + uri + " :: [Client IP] " + getClientIp(ctx, req));
 		
 		// URI handler
 		String name = uri.substring(uri.lastIndexOf("/") + 1);
@@ -115,14 +114,6 @@ public class HTTPLiveStreamingHandler extends SimpleChannelInboundHandler<FullHt
 	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
 		
 		log.error("error :\n{}", cause);
-		/*
-		for(StackTraceElement st : cause.getStackTrace()) { 
-			if(st.toString().startsWith("com.kdy")) {
-				log.error(st.toString()); 
-			} 
-		}
-		*/
-		//log.info("############ Channel exceptionCaught ==== " + ctx.channel().id() + " #################");
 		ctx.close();
 	}
 	

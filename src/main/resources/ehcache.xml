@@ -17,7 +17,7 @@
     	</expiry>
     	<listeners>
     		<listener>
-	    		<class>com.tigen.stream.bean.ehcache.VodFileCacheEventLogger</class>
+	    		<class>com.kdy.bean.ehcache.VodFileCacheEventLogger</class>
 	 		    <event-firing-mode>ASYNCHRONOUS</event-firing-mode>
 	            <event-ordering-mode>UNORDERED</event-ordering-mode>
 	            <events-to-fire-on>CREATED</events-to-fire-on>
@@ -39,7 +39,7 @@
     	</expiry>
     	<listeners>
     		<listener>
-	    		<class>com.tigen.stream.bean.ehcache.Mp4ReaderCacheEventLogger</class>
+	    		<class>com.kdy.bean.ehcache.Mp4ReaderCacheEventLogger</class>
 	 		    <event-firing-mode>ASYNCHRONOUS</event-firing-mode>
 	            <event-ordering-mode>UNORDERED</event-ordering-mode>
 	            <events-to-fire-on>CREATED</events-to-fire-on>
@@ -58,7 +58,7 @@
     	</expiry>
     	<listeners>
     		<listener>
-	    		<class>com.tigen.stream.bean.ehcache.Mp4FrameCacheEventLogger</class>
+	    		<class>com.kdy.bean.ehcache.Mp4FrameCacheEventLogger</class>
 	 		    <event-firing-mode>ASYNCHRONOUS</event-firing-mode>
 	            <event-ordering-mode>UNORDERED</event-ordering-mode>
 	            <events-to-fire-on>CREATED</events-to-fire-on>
@@ -77,7 +77,7 @@
     	</expiry>
     	<listeners>
     		<listener>
-	    		<class>com.tigen.stream.bean.ehcache.M3u8CacheEventLogger</class>
+	    		<class>com.kdy.bean.ehcache.M3u8CacheEventLogger</class>
 	 		    <event-firing-mode>ASYNCHRONOUS</event-firing-mode>
 	            <event-ordering-mode>UNORDERED</event-ordering-mode>
 	            <events-to-fire-on>CREATED</events-to-fire-on>

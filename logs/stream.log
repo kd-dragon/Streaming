@@ -990,3 +990,305 @@ Caused by: java.lang.NumberFormatException: For input string: "200000L"
 [2021-03-13 03:33:23:23894][RMI TCP Connection(6)-127.0.0.1] INFO  io.undertow.Undertow -stopping server: Undertow - 2.2.4.Final
 [2021-03-13 03:33:23:23897][RMI TCP Connection(6)-127.0.0.1] INFO  io.undertow.servlet.spec.ServletContextImpl -Destroying Spring FrameworkServlet 'dispatcherServlet'
 [2021-03-13 03:33:23:23901][RMI TCP Connection(6)-127.0.0.1] INFO  org.springframework.scheduling.concurrent.ExecutorConfigurationSupport -Shutting down ExecutorService 'applicationTaskExecutor'
+[2022-03-06 23:51:15:486][restartedMain] INFO  org.springframework.boot.StartupInfoLogger -Starting DdragonStreamingApplication using Java 1.8.0_251 on DESKTOP-432QGLB with PID 5232 (D:\workspace\Ddragon_Streaming\bin\main started by KDY in D:\workspace\Ddragon_Streaming)
+[2022-03-06 23:51:15:488][restartedMain] INFO  org.springframework.boot.SpringApplication -The following profiles are active: main
+[2022-03-06 23:51:15:515][restartedMain] WARN  org.springframework.boot.logging.DeferredLog -Property 'spring.profiles' imported from location 'class path resource [application.yml]' is invalid and should be replaced with 'spring.config.activate.on-profile' [origin: class path resource [application.yml] - 37:13]
+[2022-03-06 23:51:15:538][restartedMain] INFO  org.springframework.boot.logging.DeferredLog -Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+[2022-03-06 23:51:15:538][restartedMain] INFO  org.springframework.boot.logging.DeferredLog -For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+[2022-03-06 23:51:16:922][restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate -Multiple Spring Data modules found, entering strict repository configuration mode!
+[2022-03-06 23:51:16:923][restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate -Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[2022-03-06 23:51:16:936][restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate -Finished Spring Data repository scanning in 4 ms. Found 0 Redis repository interfaces.
+[2022-03-06 23:51:16:1105][restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate -Multiple Spring Data modules found, entering strict repository configuration mode!
+[2022-03-06 23:51:16:1106][restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate -Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[2022-03-06 23:51:16:1121][restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate -Finished Spring Data repository scanning in 14 ms. Found 0 Redis repository interfaces.
+[2022-03-06 23:51:16:1522][restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -Tomcat initialized with port(s): 7070 (http)
+[2022-03-06 23:51:16:1562][restartedMain] INFO  org.apache.juli.logging.DirectJDKLog -Initializing ProtocolHandler ["http-nio-7070"]
+[2022-03-06 23:51:16:1563][restartedMain] INFO  org.apache.juli.logging.DirectJDKLog -Starting service [Tomcat]
+[2022-03-06 23:51:16:1563][restartedMain] INFO  org.apache.juli.logging.DirectJDKLog -Starting Servlet engine: [Apache Tomcat/9.0.43]
+[2022-03-06 23:51:16:1619][restartedMain] INFO  org.apache.juli.logging.DirectJDKLog -Initializing Spring embedded WebApplicationContext
+[2022-03-06 23:51:16:1619][restartedMain] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext -Root WebApplicationContext: initialization completed in 1081 ms
+[2022-03-06 23:51:16:1682][restartedMain] WARN  org.springframework.boot.actuate.endpoint.EndpointId -Endpoint ID 'system.dist.usage' contains invalid characters, please migrate to a valid format.
+[2022-03-06 23:51:17:2318][restartedMain] WARN  org.springframework.context.support.AbstractApplicationContext -Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jCacheManagerFactoryBean' defined in class path resource [com/kdy/config/EhCacheConfig.class]: Invocation of init method failed; nested exception is javax.cache.CacheException: org.ehcache.xml.exceptions.XmlConfigurationException: Error parsing XML configuration at file:/D:/workspace/Ddragon_Streaming/bin/main/ehcache.xml
+[2022-03-06 23:51:17:2330][restartedMain] INFO  org.apache.juli.logging.DirectJDKLog -Stopping service [Tomcat]
+[2022-03-06 23:51:17:2340][restartedMain] INFO  org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener -
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+[2022-03-06 23:51:17:2352][restartedMain] ERROR org.springframework.boot.SpringApplication -Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jCacheManagerFactoryBean' defined in class path resource [com/kdy/config/EhCacheConfig.class]: Invocation of init method failed; nested exception is javax.cache.CacheException: org.ehcache.xml.exceptions.XmlConfigurationException: Error parsing XML configuration at file:/D:/workspace/Ddragon_Streaming/bin/main/ehcache.xml
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1786)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:602)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:524)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:925)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:917)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:582)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:144)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:767)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:759)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:426)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:326)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1311)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
+	at com.kdy.DdragonStreamingApplication.main(DdragonStreamingApplication.java:25)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: javax.cache.CacheException: org.ehcache.xml.exceptions.XmlConfigurationException: Error parsing XML configuration at file:/D:/workspace/Ddragon_Streaming/bin/main/ehcache.xml
+	at org.ehcache.jsr107.EhcacheCachingProvider$ConfigSupplier.getConfiguration(EhcacheCachingProvider.java:331)
+	at org.ehcache.jsr107.EhcacheCachingProvider.getCacheManager(EhcacheCachingProvider.java:134)
+	at org.ehcache.jsr107.EhcacheCachingProvider.getCacheManager(EhcacheCachingProvider.java:85)
+	at org.springframework.cache.jcache.JCacheManagerFactoryBean.afterPropertiesSet(JCacheManagerFactoryBean.java:83)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1845)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1782)
+	... 22 common frames omitted
+Caused by: org.ehcache.xml.exceptions.XmlConfigurationException: Error parsing XML configuration at file:/D:/workspace/Ddragon_Streaming/bin/main/ehcache.xml
+	at org.ehcache.xml.XmlConfiguration.<init>(XmlConfiguration.java:124)
+	at org.ehcache.xml.XmlConfiguration.<init>(XmlConfiguration.java:90)
+	at org.ehcache.jsr107.EhcacheCachingProvider$ConfigSupplier.getConfiguration(EhcacheCachingProvider.java:328)
+	... 27 common frames omitted
+Caused by: java.lang.ClassNotFoundException: com.tigen.stream.bean.ehcache$VodFileCacheEventLogger
+	at java.net.URLClassLoader.findClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Unknown Source)
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:145)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Unknown Source)
+	at org.ehcache.xml.XmlConfiguration.lambda$static$12(XmlConfiguration.java:401)
+	at org.ehcache.xml.XmlConfiguration.getClassForName(XmlConfiguration.java:371)
+	at org.ehcache.xml.service.DefaultCacheEventListenerConfigurationParser.parseServiceConfiguration(DefaultCacheEventListenerConfigurationParser.java:54)
+	at org.ehcache.xml.ServiceConfigurationParser.parseConfiguration(ServiceConfigurationParser.java:66)
+	at org.ehcache.xml.ConfigurationParser.parseServiceConfigurations(ConfigurationParser.java:181)
+	at org.ehcache.xml.ConfigurationParser.documentToConfig(ConfigurationParser.java:331)
+	at org.ehcache.xml.XmlConfiguration.<init>(XmlConfiguration.java:116)
+	... 29 common frames omitted
+[2022-03-06 23:52:48:475][restartedMain] INFO  org.springframework.boot.StartupInfoLogger -Starting DdragonStreamingApplication using Java 1.8.0_251 on DESKTOP-432QGLB with PID 11016 (D:\workspace\Ddragon_Streaming\bin\main started by KDY in D:\workspace\Ddragon_Streaming)
+[2022-03-06 23:52:48:477][restartedMain] INFO  org.springframework.boot.SpringApplication -The following profiles are active: main
+[2022-03-06 23:52:48:515][restartedMain] WARN  org.springframework.boot.logging.DeferredLog -Property 'spring.profiles' imported from location 'class path resource [application.yml]' is invalid and should be replaced with 'spring.config.activate.on-profile' [origin: class path resource [application.yml] - 37:13]
+[2022-03-06 23:52:48:516][restartedMain] INFO  org.springframework.boot.logging.DeferredLog -Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+[2022-03-06 23:52:48:516][restartedMain] INFO  org.springframework.boot.logging.DeferredLog -For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+[2022-03-06 23:52:48:912][restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate -Multiple Spring Data modules found, entering strict repository configuration mode!
+[2022-03-06 23:52:48:913][restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate -Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[2022-03-06 23:52:48:926][restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate -Finished Spring Data repository scanning in 4 ms. Found 0 Redis repository interfaces.
+[2022-03-06 23:52:48:1099][restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate -Multiple Spring Data modules found, entering strict repository configuration mode!
+[2022-03-06 23:52:48:1099][restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate -Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[2022-03-06 23:52:48:1114][restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate -Finished Spring Data repository scanning in 14 ms. Found 0 Redis repository interfaces.
+[2022-03-06 23:52:49:1508][restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -Tomcat initialized with port(s): 7070 (http)
+[2022-03-06 23:52:49:1515][restartedMain] INFO  org.apache.juli.logging.DirectJDKLog -Initializing ProtocolHandler ["http-nio-7070"]
+[2022-03-06 23:52:49:1515][restartedMain] INFO  org.apache.juli.logging.DirectJDKLog -Starting service [Tomcat]
+[2022-03-06 23:52:49:1516][restartedMain] INFO  org.apache.juli.logging.DirectJDKLog -Starting Servlet engine: [Apache Tomcat/9.0.43]
+[2022-03-06 23:52:49:1611][restartedMain] INFO  org.apache.juli.logging.DirectJDKLog -Initializing Spring embedded WebApplicationContext
+[2022-03-06 23:52:49:1611][restartedMain] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext -Root WebApplicationContext: initialization completed in 1094 ms
+[2022-03-06 23:52:49:1677][restartedMain] WARN  org.springframework.boot.actuate.endpoint.EndpointId -Endpoint ID 'system.dist.usage' contains invalid characters, please migrate to a valid format.
+[2022-03-06 23:52:50:2336][restartedMain] WARN  org.springframework.context.support.AbstractApplicationContext -Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jCacheManagerFactoryBean' defined in class path resource [com/kdy/config/EhCacheConfig.class]: Invocation of init method failed; nested exception is javax.cache.CacheException: org.ehcache.xml.exceptions.XmlConfigurationException: Error parsing XML configuration at file:/D:/workspace/Ddragon_Streaming/bin/main/ehcache.xml
+[2022-03-06 23:52:50:2349][restartedMain] INFO  org.apache.juli.logging.DirectJDKLog -Stopping service [Tomcat]
+[2022-03-06 23:52:50:2360][restartedMain] INFO  org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener -
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+[2022-03-06 23:52:50:2371][restartedMain] ERROR org.springframework.boot.SpringApplication -Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jCacheManagerFactoryBean' defined in class path resource [com/kdy/config/EhCacheConfig.class]: Invocation of init method failed; nested exception is javax.cache.CacheException: org.ehcache.xml.exceptions.XmlConfigurationException: Error parsing XML configuration at file:/D:/workspace/Ddragon_Streaming/bin/main/ehcache.xml
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1786)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:602)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:524)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:925)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:917)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:582)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:144)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:767)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:759)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:426)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:326)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1311)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
+	at com.kdy.DdragonStreamingApplication.main(DdragonStreamingApplication.java:25)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: javax.cache.CacheException: org.ehcache.xml.exceptions.XmlConfigurationException: Error parsing XML configuration at file:/D:/workspace/Ddragon_Streaming/bin/main/ehcache.xml
+	at org.ehcache.jsr107.EhcacheCachingProvider$ConfigSupplier.getConfiguration(EhcacheCachingProvider.java:331)
+	at org.ehcache.jsr107.EhcacheCachingProvider.getCacheManager(EhcacheCachingProvider.java:134)
+	at org.ehcache.jsr107.EhcacheCachingProvider.getCacheManager(EhcacheCachingProvider.java:85)
+	at org.springframework.cache.jcache.JCacheManagerFactoryBean.afterPropertiesSet(JCacheManagerFactoryBean.java:83)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1845)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1782)
+	... 22 common frames omitted
+Caused by: org.ehcache.xml.exceptions.XmlConfigurationException: Error parsing XML configuration at file:/D:/workspace/Ddragon_Streaming/bin/main/ehcache.xml
+	at org.ehcache.xml.XmlConfiguration.<init>(XmlConfiguration.java:124)
+	at org.ehcache.xml.XmlConfiguration.<init>(XmlConfiguration.java:90)
+	at org.ehcache.jsr107.EhcacheCachingProvider$ConfigSupplier.getConfiguration(EhcacheCachingProvider.java:328)
+	... 27 common frames omitted
+Caused by: java.lang.ClassNotFoundException: com.tigen.stream.bean.ehcache$VodFileCacheEventLogger
+	at java.net.URLClassLoader.findClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Unknown Source)
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:145)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Unknown Source)
+	at org.ehcache.xml.XmlConfiguration.lambda$static$12(XmlConfiguration.java:401)
+	at org.ehcache.xml.XmlConfiguration.getClassForName(XmlConfiguration.java:371)
+	at org.ehcache.xml.service.DefaultCacheEventListenerConfigurationParser.parseServiceConfiguration(DefaultCacheEventListenerConfigurationParser.java:54)
+	at org.ehcache.xml.ServiceConfigurationParser.parseConfiguration(ServiceConfigurationParser.java:66)
+	at org.ehcache.xml.ConfigurationParser.parseServiceConfigurations(ConfigurationParser.java:181)
+	at org.ehcache.xml.ConfigurationParser.documentToConfig(ConfigurationParser.java:331)
+	at org.ehcache.xml.XmlConfiguration.<init>(XmlConfiguration.java:116)
+	... 29 common frames omitted
+[2022-03-06 23:55:06:475][restartedMain] INFO  org.springframework.boot.StartupInfoLogger -Starting DdragonStreamingApplication using Java 1.8.0_251 on DESKTOP-432QGLB with PID 4280 (D:\workspace\Ddragon_Streaming\bin\main started by KDY in D:\workspace\Ddragon_Streaming)
+[2022-03-06 23:55:06:477][restartedMain] INFO  org.springframework.boot.SpringApplication -The following profiles are active: main
+[2022-03-06 23:55:06:504][restartedMain] WARN  org.springframework.boot.logging.DeferredLog -Property 'spring.profiles' imported from location 'class path resource [application.yml]' is invalid and should be replaced with 'spring.config.activate.on-profile' [origin: class path resource [application.yml] - 37:13]
+[2022-03-06 23:55:06:526][restartedMain] INFO  org.springframework.boot.logging.DeferredLog -Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+[2022-03-06 23:55:06:527][restartedMain] INFO  org.springframework.boot.logging.DeferredLog -For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+[2022-03-06 23:55:07:909][restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate -Multiple Spring Data modules found, entering strict repository configuration mode!
+[2022-03-06 23:55:07:910][restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate -Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[2022-03-06 23:55:07:924][restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate -Finished Spring Data repository scanning in 4 ms. Found 0 Redis repository interfaces.
+[2022-03-06 23:55:07:1100][restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate -Multiple Spring Data modules found, entering strict repository configuration mode!
+[2022-03-06 23:55:07:1100][restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate -Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[2022-03-06 23:55:07:1114][restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate -Finished Spring Data repository scanning in 14 ms. Found 0 Redis repository interfaces.
+[2022-03-06 23:55:07:1511][restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -Tomcat initialized with port(s): 7070 (http)
+[2022-03-06 23:55:07:1549][restartedMain] INFO  org.apache.juli.logging.DirectJDKLog -Initializing ProtocolHandler ["http-nio-7070"]
+[2022-03-06 23:55:07:1550][restartedMain] INFO  org.apache.juli.logging.DirectJDKLog -Starting service [Tomcat]
+[2022-03-06 23:55:07:1550][restartedMain] INFO  org.apache.juli.logging.DirectJDKLog -Starting Servlet engine: [Apache Tomcat/9.0.43]
+[2022-03-06 23:55:07:1606][restartedMain] INFO  org.apache.juli.logging.DirectJDKLog -Initializing Spring embedded WebApplicationContext
+[2022-03-06 23:55:07:1606][restartedMain] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext -Root WebApplicationContext: initialization completed in 1079 ms
+[2022-03-06 23:55:07:1671][restartedMain] WARN  org.springframework.boot.actuate.endpoint.EndpointId -Endpoint ID 'system.dist.usage' contains invalid characters, please migrate to a valid format.
+[2022-03-06 23:55:08:2309][restartedMain] WARN  org.springframework.context.support.AbstractApplicationContext -Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jCacheManagerFactoryBean' defined in class path resource [com/kdy/config/EhCacheConfig.class]: Invocation of init method failed; nested exception is javax.cache.CacheException: org.ehcache.xml.exceptions.XmlConfigurationException: Error parsing XML configuration at file:/D:/workspace/Ddragon_Streaming/bin/main/ehcache.xml
+[2022-03-06 23:55:08:2321][restartedMain] INFO  org.apache.juli.logging.DirectJDKLog -Stopping service [Tomcat]
+[2022-03-06 23:55:08:2332][restartedMain] INFO  org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener -
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+[2022-03-06 23:55:08:2345][restartedMain] ERROR org.springframework.boot.SpringApplication -Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jCacheManagerFactoryBean' defined in class path resource [com/kdy/config/EhCacheConfig.class]: Invocation of init method failed; nested exception is javax.cache.CacheException: org.ehcache.xml.exceptions.XmlConfigurationException: Error parsing XML configuration at file:/D:/workspace/Ddragon_Streaming/bin/main/ehcache.xml
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1786)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:602)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:524)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:925)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:917)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:582)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:144)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:767)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:759)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:426)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:326)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1311)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1300)
+	at com.kdy.DdragonStreamingApplication.main(DdragonStreamingApplication.java:25)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49)
+Caused by: javax.cache.CacheException: org.ehcache.xml.exceptions.XmlConfigurationException: Error parsing XML configuration at file:/D:/workspace/Ddragon_Streaming/bin/main/ehcache.xml
+	at org.ehcache.jsr107.EhcacheCachingProvider$ConfigSupplier.getConfiguration(EhcacheCachingProvider.java:331)
+	at org.ehcache.jsr107.EhcacheCachingProvider.getCacheManager(EhcacheCachingProvider.java:134)
+	at org.ehcache.jsr107.EhcacheCachingProvider.getCacheManager(EhcacheCachingProvider.java:85)
+	at org.springframework.cache.jcache.JCacheManagerFactoryBean.afterPropertiesSet(JCacheManagerFactoryBean.java:83)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1845)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1782)
+	... 22 common frames omitted
+Caused by: org.ehcache.xml.exceptions.XmlConfigurationException: Error parsing XML configuration at file:/D:/workspace/Ddragon_Streaming/bin/main/ehcache.xml
+	at org.ehcache.xml.XmlConfiguration.<init>(XmlConfiguration.java:124)
+	at org.ehcache.xml.XmlConfiguration.<init>(XmlConfiguration.java:90)
+	at org.ehcache.jsr107.EhcacheCachingProvider$ConfigSupplier.getConfiguration(EhcacheCachingProvider.java:328)
+	... 27 common frames omitted
+Caused by: java.lang.ClassNotFoundException: com.tigen.stream.bean.ehcache$VodFileCacheEventLogger
+	at java.net.URLClassLoader.findClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Unknown Source)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Unknown Source)
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:145)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Unknown Source)
+	at org.ehcache.xml.XmlConfiguration.lambda$static$12(XmlConfiguration.java:401)
+	at org.ehcache.xml.XmlConfiguration.getClassForName(XmlConfiguration.java:371)
+	at org.ehcache.xml.service.DefaultCacheEventListenerConfigurationParser.parseServiceConfiguration(DefaultCacheEventListenerConfigurationParser.java:54)
+	at org.ehcache.xml.ServiceConfigurationParser.parseConfiguration(ServiceConfigurationParser.java:66)
+	at org.ehcache.xml.ConfigurationParser.parseServiceConfigurations(ConfigurationParser.java:181)
+	at org.ehcache.xml.ConfigurationParser.documentToConfig(ConfigurationParser.java:331)
+	at org.ehcache.xml.XmlConfiguration.<init>(XmlConfiguration.java:116)
+	... 29 common frames omitted
+[2022-03-06 23:56:25:474][restartedMain] INFO  org.springframework.boot.StartupInfoLogger -Starting DdragonStreamingApplication using Java 1.8.0_251 on DESKTOP-432QGLB with PID 1520 (D:\workspace\Ddragon_Streaming\bin\main started by KDY in D:\workspace\Ddragon_Streaming)
+[2022-03-06 23:56:25:475][restartedMain] INFO  org.springframework.boot.SpringApplication -The following profiles are active: main
+[2022-03-06 23:56:25:515][restartedMain] WARN  org.springframework.boot.logging.DeferredLog -Property 'spring.profiles' imported from location 'class path resource [application.yml]' is invalid and should be replaced with 'spring.config.activate.on-profile' [origin: class path resource [application.yml] - 37:13]
+[2022-03-06 23:56:25:516][restartedMain] INFO  org.springframework.boot.logging.DeferredLog -Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+[2022-03-06 23:56:25:516][restartedMain] INFO  org.springframework.boot.logging.DeferredLog -For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+[2022-03-06 23:56:26:919][restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate -Multiple Spring Data modules found, entering strict repository configuration mode!
+[2022-03-06 23:56:26:919][restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate -Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[2022-03-06 23:56:26:932][restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate -Finished Spring Data repository scanning in 4 ms. Found 0 Redis repository interfaces.
+[2022-03-06 23:56:26:1108][restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate -Multiple Spring Data modules found, entering strict repository configuration mode!
+[2022-03-06 23:56:26:1108][restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate -Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+[2022-03-06 23:56:26:1123][restartedMain] INFO  org.springframework.data.repository.config.RepositoryConfigurationDelegate -Finished Spring Data repository scanning in 14 ms. Found 0 Redis repository interfaces.
+[2022-03-06 23:56:26:1518][restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -Tomcat initialized with port(s): 7070 (http)
+[2022-03-06 23:56:26:1556][restartedMain] INFO  org.apache.juli.logging.DirectJDKLog -Initializing ProtocolHandler ["http-nio-7070"]
+[2022-03-06 23:56:26:1557][restartedMain] INFO  org.apache.juli.logging.DirectJDKLog -Starting service [Tomcat]
+[2022-03-06 23:56:26:1557][restartedMain] INFO  org.apache.juli.logging.DirectJDKLog -Starting Servlet engine: [Apache Tomcat/9.0.43]
+[2022-03-06 23:56:26:1614][restartedMain] INFO  org.apache.juli.logging.DirectJDKLog -Initializing Spring embedded WebApplicationContext
+[2022-03-06 23:56:26:1615][restartedMain] INFO  org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext -Root WebApplicationContext: initialization completed in 1098 ms
+[2022-03-06 23:56:27:1680][restartedMain] WARN  org.springframework.boot.actuate.endpoint.EndpointId -Endpoint ID 'system.dist.usage' contains invalid characters, please migrate to a valid format.
+[2022-03-06 23:56:27:2407][restartedMain] INFO  org.ehcache.core.EhcacheManager -Cache 'm3u8Cache' created in EhcacheManager.
+[2022-03-06 23:56:27:2409][restartedMain] INFO  org.ehcache.core.EhcacheManager -Cache 'vodFileCache' created in EhcacheManager.
+[2022-03-06 23:56:27:2410][restartedMain] INFO  org.ehcache.core.EhcacheManager -Cache 'mp4ReaderCache' created in EhcacheManager.
+[2022-03-06 23:56:27:2425][restartedMain] INFO  org.ehcache.jsr107.Eh107CacheManager -Registering Ehcache MBean javax.cache:type=CacheConfiguration,CacheManager=file./D./workspace/Ddragon_Streaming/bin/main/ehcache.xml,Cache=m3u8Cache
+[2022-03-06 23:56:27:2426][restartedMain] INFO  org.ehcache.jsr107.Eh107CacheManager -Registering Ehcache MBean javax.cache:type=CacheStatistics,CacheManager=file./D./workspace/Ddragon_Streaming/bin/main/ehcache.xml,Cache=m3u8Cache
+[2022-03-06 23:56:27:2427][restartedMain] INFO  org.ehcache.jsr107.Eh107CacheManager -Registering Ehcache MBean javax.cache:type=CacheConfiguration,CacheManager=file./D./workspace/Ddragon_Streaming/bin/main/ehcache.xml,Cache=vodFileCache
+[2022-03-06 23:56:27:2427][restartedMain] INFO  org.ehcache.jsr107.Eh107CacheManager -Registering Ehcache MBean javax.cache:type=CacheStatistics,CacheManager=file./D./workspace/Ddragon_Streaming/bin/main/ehcache.xml,Cache=vodFileCache
+[2022-03-06 23:56:27:2427][restartedMain] INFO  org.ehcache.jsr107.Eh107CacheManager -Registering Ehcache MBean javax.cache:type=CacheConfiguration,CacheManager=file./D./workspace/Ddragon_Streaming/bin/main/ehcache.xml,Cache=mp4ReaderCache
+[2022-03-06 23:56:27:2427][restartedMain] INFO  org.ehcache.jsr107.Eh107CacheManager -Registering Ehcache MBean javax.cache:type=CacheStatistics,CacheManager=file./D./workspace/Ddragon_Streaming/bin/main/ehcache.xml,Cache=mp4ReaderCache
+[2022-03-06 23:56:27:2429][restartedMain] INFO  org.ehcache.jsr107.Eh107CacheManager -Registering Ehcache MBean javax.cache:type=CacheConfiguration,CacheManager=file./D./workspace/Ddragon_Streaming/bin/main/ehcache.xml,Cache=m3u8Cache
+[2022-03-06 23:56:27:2429][restartedMain] INFO  org.ehcache.jsr107.Eh107CacheManager -Registering Ehcache MBean javax.cache:type=CacheStatistics,CacheManager=file./D./workspace/Ddragon_Streaming/bin/main/ehcache.xml,Cache=m3u8Cache
+[2022-03-06 23:56:27:2429][restartedMain] INFO  org.ehcache.jsr107.Eh107CacheManager -Registering Ehcache MBean javax.cache:type=CacheConfiguration,CacheManager=file./D./workspace/Ddragon_Streaming/bin/main/ehcache.xml,Cache=vodFileCache
+[2022-03-06 23:56:27:2430][restartedMain] INFO  org.ehcache.jsr107.Eh107CacheManager -Registering Ehcache MBean javax.cache:type=CacheStatistics,CacheManager=file./D./workspace/Ddragon_Streaming/bin/main/ehcache.xml,Cache=vodFileCache
+[2022-03-06 23:56:27:2430][restartedMain] INFO  org.ehcache.jsr107.Eh107CacheManager -Registering Ehcache MBean javax.cache:type=CacheConfiguration,CacheManager=file./D./workspace/Ddragon_Streaming/bin/main/ehcache.xml,Cache=mp4ReaderCache
+[2022-03-06 23:56:27:2430][restartedMain] INFO  org.ehcache.jsr107.Eh107CacheManager -Registering Ehcache MBean javax.cache:type=CacheStatistics,CacheManager=file./D./workspace/Ddragon_Streaming/bin/main/ehcache.xml,Cache=mp4ReaderCache
+[2022-03-06 23:56:27:2550][restartedMain] INFO  org.springframework.security.web.DefaultSecurityFilterChain -Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@65af96cc, org.springframework.security.web.context.SecurityContextPersistenceFilter@2ddbc16, org.springframework.security.web.header.HeaderWriterFilter@15754b4f, org.springframework.security.web.authentication.logout.LogoutFilter@bef7c61, com.kdy.bean.security.JwtRequestFilter@6430ceaf, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@79a0f37f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@aad37c2, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@260fbb90, org.springframework.security.web.session.SessionManagementFilter@70e5c36a, org.springframework.security.web.access.ExceptionTranslationFilter@11c6f9cc, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@72602b8]
+[2022-03-06 23:56:27:2619][restartedMain] INFO  org.springframework.scheduling.concurrent.ExecutorConfigurationSupport -Initializing ExecutorService 'applicationTaskExecutor'
+[2022-03-06 23:56:28:2880][restartedMain] INFO  org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer -LiveReload server is running on port 35729
+[2022-03-06 23:56:28:2884][restartedMain] INFO  org.springframework.boot.actuate.endpoint.web.EndpointLinksResolver -Exposing 14 endpoint(s) beneath base path '/monitor'
+[2022-03-06 23:56:28:2906][restartedMain] INFO  org.apache.juli.logging.DirectJDKLog -Starting ProtocolHandler ["http-nio-7070"]
+[2022-03-06 23:56:28:2918][restartedMain] INFO  org.springframework.boot.web.embedded.tomcat.TomcatWebServer -Tomcat started on port(s): 7070 (http) with context path ''
+[2022-03-06 23:56:28:2926][restartedMain] INFO  com.kdy.config.SchedulerConfig -** POOL_SIZE : 5
+[2022-03-06 23:56:28:2929][restartedMain] INFO  org.springframework.scheduling.concurrent.ExecutorConfigurationSupport -Initializing ExecutorService
+[2022-03-06 23:56:28:2932][restartedMain] INFO  org.springframework.boot.StartupInfoLogger -Started DdragonStreamingApplication in 2.798 seconds (JVM running for 3.623)
+[2022-03-06 23:56:29:3941][TG_HttpStreamingScheduler] INFO  com.kdy.sched.HttpStreamingScheduler -HttpStreamingScheduler service() - Http Server initialize START
+[2022-03-06 23:56:29:3941][TG_SystemMonitoringScheduler] INFO  com.kdy.sched.SystemMonitoringScheduler -
+free memory: 387,616
+allocated memory: 482,816
+max memory: 7,442,432
+total free memory: 7,347,232
+
+[2022-03-06 23:56:29:3942][Thread-15] INFO  com.kdy.bean.netty.NettyServerRunnable -NettyServerRunnable run()
+[2022-03-06 23:56:29:4066][RMI TCP Connection(3)-127.0.0.1] INFO  org.apache.juli.logging.DirectJDKLog -Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2022-03-06 23:56:29:4066][RMI TCP Connection(3)-127.0.0.1] INFO  org.springframework.web.servlet.FrameworkServlet -Initializing Servlet 'dispatcherServlet'
+[2022-03-06 23:56:29:4066][RMI TCP Connection(3)-127.0.0.1] INFO  org.springframework.web.servlet.FrameworkServlet -Initializing Servlet 'dispatcherServlet'
+[2022-03-06 23:56:29:4067][RMI TCP Connection(3)-127.0.0.1] INFO  org.springframework.web.servlet.FrameworkServlet -Completed initialization in 1 ms
+[2022-03-06 23:56:29:4067][RMI TCP Connection(3)-127.0.0.1] INFO  org.springframework.web.servlet.FrameworkServlet -Completed initialization in 1 ms
+[2022-03-06 23:57:09:44026][RMI TCP Connection(10)-127.0.0.1] INFO  org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin -Application shutdown requested.
+[2022-03-06 23:57:09:44191][RMI TCP Connection(11)-127.0.0.1] INFO  org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin -Application shutdown requested.
+[2022-03-06 23:57:09:44360][RMI TCP Connection(12)-127.0.0.1] INFO  org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin -Application shutdown requested.
+[2022-03-06 23:57:09:44410][RMI TCP Connection(10)-127.0.0.1] INFO  org.springframework.scheduling.concurrent.ExecutorConfigurationSupport -Shutting down ExecutorService 'applicationTaskExecutor'
+[2022-03-06 23:57:09:44412][RMI TCP Connection(10)-127.0.0.1] INFO  org.ehcache.core.EhcacheManager -Cache 'm3u8Cache' removed from EhcacheManager.
+[2022-03-06 23:57:09:44413][RMI TCP Connection(10)-127.0.0.1] INFO  org.ehcache.core.EhcacheManager -Cache 'vodFileCache' removed from EhcacheManager.
+[2022-03-06 23:57:09:44413][RMI TCP Connection(10)-127.0.0.1] INFO  org.ehcache.core.EhcacheManager -Cache 'mp4ReaderCache' removed from EhcacheManager.

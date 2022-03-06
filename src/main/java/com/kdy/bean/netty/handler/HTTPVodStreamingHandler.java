@@ -61,9 +61,9 @@ public class HTTPVodStreamingHandler extends SimpleChannelInboundHandler<FullHtt
 		
 		FullHttpResponse res = null;
 		String uri = req.uri();
-		//log.info("uri == " + uri);
 		
-		/**
+		/** # Adaptive HLS Streaming
+		 * 
 		 *  <Master M3U8 파일 생성> 
 		 *  URI Pattern: /vod/{path}/{vid}/master.m3u8
 		 *  ex) /vod/upload/encoding/video/2021/07/20210719000000000548/master.m3u8
@@ -172,15 +172,6 @@ public class HTTPVodStreamingHandler extends SimpleChannelInboundHandler<FullHtt
 						ByteBuf rtnBuf = Unpooled.wrappedBuffer(body);
 						res = new DefaultFullHttpResponse(req.protocolVersion(), HttpResponseStatus.OK, rtnBuf);
 						
-						/* 
-						 *  file 검사용 테스트 로직 
-						 *
-						File file = new File("C:/Users/tigen_eng_001/Desktop/test/sample/" + name);
-						FileOutputStream fos = new FileOutputStream(file);
-						fos.write(body);
-						fos.close();
-						*/
-						
 						// HTTP Response Header Mpeg-ts 설정
 						setHeaderTS(res);
 						setHttpUtil(ctx, res, req);
@@ -231,10 +222,7 @@ public class HTTPVodStreamingHandler extends SimpleChannelInboundHandler<FullHtt
     }
 	
 	private void setHeaderM3u8(FullHttpResponse res) {
-		//DateTime date = DateTime.now();
-		//DateTimeFormatter fmt = DateTimeFormat.forPattern("E, dd MMM yyyy HH:mm:ss").withLocale(Locale.ENGLISH);
 		
-		// nginx setting 
 		res.headers().set(HttpHeaderNames.ACCESS_CONTROL_ALLOW_HEADERS, "DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range")
 				.set(HttpHeaderNames.ACCESS_CONTROL_ALLOW_METHODS, "GET, POST, OPTIONS")
 				.set(HttpHeaderNames.ACCESS_CONTROL_ALLOW_ORIGIN, "*")
@@ -246,18 +234,10 @@ public class HTTPVodStreamingHandler extends SimpleChannelInboundHandler<FullHtt
 				.set(HttpHeaderNames.CONTENT_DISPOSITION, "inline;filename=f.m3u8")
 				.set(HttpHeaderNames.TRANSFER_ENCODING, "chunked");
 		
-		//.set(HttpHeaderNames.DATE, date.toString(fmt) + " GMT")
-		//.set(HttpHeaderNames.LAST_MODIFIED, "Sun, 19 Nov 2000 08:52:00 GMT")
-		//.set(HttpHeaderNames.CACHE_CONTROL, "max-age=8640000")
-		//.set(HttpHeaderNames.ACCESS_CONTROL_ALLOW_CREDENTIALS, "true")
 	}
 	
 	private void setHeaderTS(FullHttpResponse res) {
 		
-		//DateTime date = DateTime.now();
-		//DateTimeFormatter fmt = DateTimeFormat.forPattern("E, dd MMM yyyy HH:mm:ss").withLocale(Locale.ENGLISH);
-		
-		// nginx setting 
 		res.headers().add(HttpHeaderNames.ACCEPT_RANGES, "bytes")
 				.set(HttpHeaderNames.ACCESS_CONTROL_ALLOW_HEADERS, "DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range")
 				.set(HttpHeaderNames.ACCESS_CONTROL_ALLOW_METHODS, "GET, POST, OPTIONS")
@@ -268,20 +248,5 @@ public class HTTPVodStreamingHandler extends SimpleChannelInboundHandler<FullHtt
 				.add(HttpHeaderNames.CONTENT_TYPE, "video/MP2T")
 				.set(HttpHeaderNames.CONTENT_DISPOSITION, "inline;filename=f.ts")
 				.set(HttpHeaderNames.SERVER, "tgstream");
-				//.set(HttpHeaderNames.LAST_MODIFIED, "Sun, 19 Nov 2000 08:52:00 GMT");
-				//.set(HttpHeaderNames.DATE, date.toString(fmt) + " GMT")
-				//.add(HttpHeaderNames.PRAGMA, "no-cache")
-				//.set(HttpHeaderNames.CACHE_CONTROL, "max-age=8640000")
-				//.set(HttpHeaderNames.CACHE_CONTROL, "no-cache")
-				//.set(HttpHeaderNames.ACCESS_CONTROL_ALLOW_CREDENTIALS, "true")
-		
-		/*
-		if(streamMemoryVO.getHlsExpires() != null) {
-			int expires = streamMemoryVO.getHlsExpires().intValue();
-			date = DateTime.now().plusMinutes(expires);
-			fmt = DateTimeFormat.forPattern("E, dd MMM yyyy HH:mm:ss").withLocale(Locale.ENGLISH);
-			res.headers().set(HttpHeaderNames.EXPIRES, date.toString(fmt) + " GMT");
-		}
-		*/
 	}
 }
