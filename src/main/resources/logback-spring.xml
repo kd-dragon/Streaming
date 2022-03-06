@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<!-- 변수 지정 -->
+	<springProperty name="LOG_FILE_PATH_MAIN" source="logging.file.path.main"/>
+	
+	<property name="LOG_FILE_NAME" value="stream.log" />
+	<property name="LOG_PATTERN" value="[%d{yyyy-MM-dd HH:mm:ss}:%-3relative][%thread] %highlight(%-5level) %C -%msg%n"/>
+	<property name="ERR_LOG_FILE_NAME" value="error.log"/>
+	<property name="FILE_LOG_PATTERN" value ="[%d{yyyy-MM-dd HH:mm:ss}:%-3relative][%thread] %-5level %C -%msg%n" />
+
+	<!-- FILE Appender -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>${LOG_PATTERN}</Pattern>
+        </layout>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_FILE_PATH_MAIN}/${LOG_FILE_NAME}</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_FILE_PATH_MAIN}/rolling/%d{yyyy-MM-dd}/info_log_%i.zip</fileNamePattern>
+            <!-- 로그 파일의 최대 용량 (KB, MB, GB) -->
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+            	<maxFileSize>1GB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <!-- 일자별 로그 파일의 최대 생명 주기(일), 해당일 이상된 파일은 자동으로 제거 -->
+            <maxHistory>90</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+    
+    <!-- 에러의 경우 파일에 로그 처리 --> 
+    <appender name="ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender"> 
+    	<filter class="ch.qos.logback.classic.filter.LevelFilter"> 
+    		<level>error</level> <onMatch>ACCEPT</onMatch> 
+    		<onMismatch>DENY</onMismatch> 
+    	</filter> 
+    	<file>${LOG_FILE_PATH_MAIN}/${ERR_LOG_FILE_NAME}</file> 
+    	<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder"> 
+    		<pattern>${FILE_LOG_PATTERN}</pattern> 
+    	</encoder> 
+    	<!-- Rolling 정책 --> 
+    	<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy"> 
+    		<!-- .gz,.zip 등을 넣으면 자동 일자별 로그파일 압축 --> 
+    		<fileNamePattern>${LOG_FILE_PATH_MAIN}/rolling/%d{yyyy-MM-dd}/error_log_%i.zip</fileNamePattern> 
+    		<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP"> 
+    		<!-- 파일당 최고 용량 kb, mb, gb -->
+    			<maxFileSize>1GB</maxFileSize>
+    		</timeBasedFileNamingAndTriggeringPolicy> 
+    		<!-- 일자별 로그파일 최대 보관주기(~일), 해당 설정일 이상된 파일은 자동으로 제거-->
+    		<maxHistory>90</maxHistory> 
+    	</rollingPolicy>
+    </appender>
+    
+    <logger name="org.springframework.web" level="INFO">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="FILE" />
+    </logger>
+	
+    <!-- root레벨 설정 --> 
+	<root level="INFO" additivity="false"> 
+		<appender-ref ref="CONSOLE"/> 
+		<appender-ref ref="FILE"/> 
+		<appender-ref ref="ERROR"/> 
+	</root>
+    
+</configuration>
