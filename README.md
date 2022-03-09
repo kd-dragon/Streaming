@@ -1,6 +1,6 @@
 # Streaming
 LIVE/VOD Streaming SpringBoot Application. 
-refered to red5 opensource (VOD)
+referred to red5 opensource (VOD)
 + netty framework
 + redis
 
