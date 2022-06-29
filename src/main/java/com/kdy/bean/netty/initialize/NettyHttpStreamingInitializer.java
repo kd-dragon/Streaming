@@ -40,6 +40,16 @@ public class NettyHttpStreamingInitializer extends ChannelInitializer<SocketChan
 		this.nettyVO = nettyVO;
 	}
 	
+	/**
+	 * @author KDY
+	 * 
+	 * Netty initializer
+	 * 파이프 라인 설정
+	 * - SslHandler: Https 통신 처리
+	 * - HttpServerCodec: http encoder + http decoder 처리
+	 * - HttpObjectAggregator: chunked된 응답을 집계하는 코덱 (Chunked transfer encoding을 사용)
+	 * - CorsHandler: Cross-Origin Resource Sharing 정책 처리
+	 */
 	@Override
 	protected void initChannel(SocketChannel ch) throws Exception {
 		logger.debug("HTTP StreamingInitializer initChannel()_");

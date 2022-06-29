@@ -3,12 +3,12 @@ package com.kdy.bean.netty.handler;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.kdy.bean.handler.live.RedisSentinelFileHandler;
 import com.kdy.bean.handler.m3u8.MasterM3u8Handler;
 import com.kdy.dto.NoSignalVO;
+import com.kdy.dto.URIDecodeVO;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -23,9 +23,11 @@ import io.netty.handler.codec.http.HttpResponseStatus;
 import io.netty.handler.codec.http.HttpUtil;
 import io.netty.handler.codec.http.HttpVersion;
 import io.netty.util.CharsetUtil;
+import lombok.RequiredArgsConstructor;
 
 @Component
 @Sharable
+@RequiredArgsConstructor
 public class HTTPLiveStreamingHandler extends SimpleChannelInboundHandler<FullHttpRequest> {
 	
 	private final Logger log  = LoggerFactory.getLogger(HTTPLiveStreamingHandler.class);
@@ -34,18 +36,46 @@ public class HTTPLiveStreamingHandler extends SimpleChannelInboundHandler<FullHt
 	private final NoSignalVO 		noSignalVO;
 	private final MasterM3u8Handler masterM3u8Handler;
 	
-	@Autowired
-	public HTTPLiveStreamingHandler( RedisSentinelFileHandler 	redisFileHandler
-								   , MasterM3u8Handler 	masterM3u8Handler
-								   , NoSignalVO 	    noSignalVO
-	) {
-		this.redisFileHandler 	= redisFileHandler;
-		this.noSignalVO 		= noSignalVO;
-		this.masterM3u8Handler 	= masterM3u8Handler;
-	}
-
+	/**
+	 * @author KDY
+	 * HTTP SimpleChannelInboundHandler <FullHttpRequest>
+	 * - channelRead0: Channel에서 데이터 읽을 때 호출
+	 * - exceptionCaught: ChannelPipeline 오류 발생시 호출  
+	 */
 	@Override
 	protected void channelRead0(ChannelHandlerContext ctx, FullHttpRequest req) throws Exception {
+		
+		FullHttpResponse res = null;
+		String uri = req.uri();
+		
+		// URI handler (요청 URI 해석 및 substring)
+		URIDecodeVO uriVo = uriDecodeHandler(uri);
+		
+		//해당되는 m3u8, ts 파일을 Redis에서 get 
+		ByteBuf body = getContents(uriVo.getSeq(), uriVo.getName(), ctx);
+		
+		//받아온 데이터를 HTTP 응답 객체에 담기
+		res = new DefaultFullHttpResponse(req.protocolVersion(), HttpResponseStatus.OK, body);
+		
+		// m3u8 혹은 ts 파일 가져오기
+		if(uri.contains("/live") && uri.contains("index.m3u8")) {
+			// Redis에 스트리밍 데이터가 없을 시 대체 기본 파일 처리
+			if(body == null) {
+				body = setNoSignalM3u8(ctx);
+			}
+			// HTTP Header 설정 후 writeAndFlush() 호출
+			setHeaderM3u8(res);
+		} else if(uri.contains("/live") && (uri.contains(".ts"))) {
+			if(body == null) {
+				body = setNoSignalTS(ctx);
+			}
+			setHeaderTS(res);
+		} 
+		
+		setHttpUtilAndWrite(ctx, res, req);
+	}
+	
+	protected void channelRead(ChannelHandlerContext ctx, FullHttpRequest req) throws Exception {
 		
 		FullHttpResponse res = null;
 		String uri = req.uri();
@@ -74,10 +104,8 @@ public class HTTPLiveStreamingHandler extends SimpleChannelInboundHandler<FullHt
 			res = new DefaultFullHttpResponse(req.protocolVersion(), HttpResponseStatus.OK, rtnBuf);
 			
 			setHeaderM3u8(res);
-			setHttpUtil(ctx, res, req);
 		}
 		
-		//log.warn("seq : {}, name : {}", seq, name);
 		// m3u8 혹은 ts 파일 가져오기
 		if(uri.contains("/live") && uri.contains("index.m3u8")) {
 			
@@ -87,7 +115,6 @@ public class HTTPLiveStreamingHandler extends SimpleChannelInboundHandler<FullHt
 			res = new DefaultFullHttpResponse(req.protocolVersion(), HttpResponseStatus.OK, body);
 			// M3U8 File Header Setting
 			setHeaderM3u8(res);
-			setHttpUtil(ctx, res, req);
 
 		} else if(uri.contains("/live") && (uri.contains(".ts") || uri.contains(".TS"))) {
 			
@@ -97,7 +124,6 @@ public class HTTPLiveStreamingHandler extends SimpleChannelInboundHandler<FullHt
 			res = new DefaultFullHttpResponse(req.protocolVersion(), HttpResponseStatus.OK, body);
 			// TS File Header Setting
 			setHeaderTS(res);
-			setHttpUtil(ctx, res, req);
 
 			// 관리자 -> 스트리밍서버 관리 -> 스트리밍 상태 확인
 		} else if(uri.contains("/monitor")){
@@ -105,9 +131,10 @@ public class HTTPLiveStreamingHandler extends SimpleChannelInboundHandler<FullHt
 	    	res.headers().set(HttpHeaderNames.CONTENT_TYPE, "text/plain; charset=UTF-8");
 	    	//HttpUtil.setKeepAlive(res, false);
 			ctx.writeAndFlush(res);
-		} else {
-			ctx.writeAndFlush(sendError(ctx, HttpResponseStatus.BAD_REQUEST));
+			return;
 		}
+		
+		setHttpUtilAndWrite(ctx, res, req);
 	}
 
 	@Override
@@ -117,15 +144,16 @@ public class HTTPLiveStreamingHandler extends SimpleChannelInboundHandler<FullHt
 		ctx.close();
 	}
 	
-	private void setHttpUtil(ChannelHandlerContext ctx, FullHttpResponse res, FullHttpRequest req) throws Exception {
+	private void setHttpUtilAndWrite(ChannelHandlerContext ctx, FullHttpResponse res, FullHttpRequest req) throws Exception {
 		HttpUtil.setContentLength(res, res.content().readableBytes());		
 		
 		if(HttpUtil.isKeepAlive(req) && res.status().code() == 200) {
 			HttpUtil.setKeepAlive(res, true);
 			ctx.writeAndFlush(res);
-		} else {
-			ctx.writeAndFlush(sendError(ctx, HttpResponseStatus.BAD_REQUEST));
-		}
+		} 
+		
+		ctx.writeAndFlush(sendError(ctx, HttpResponseStatus.BAD_REQUEST));
+		
 	}
     
     private FullHttpResponse sendError(ChannelHandlerContext ctx, HttpResponseStatus status) {
@@ -173,5 +201,25 @@ public class HTTPLiveStreamingHandler extends SimpleChannelInboundHandler<FullHt
 	
 	private ByteBuf setNoSignalTS(ChannelHandlerContext ctx) {
     	return ctx.alloc().heapBuffer().writeBytes(noSignalVO.getNoSignalTs());
+	}
+	
+	private URIDecodeVO uriDecodeHandler(String uri) {
+		
+		URIDecodeVO uriDecodeVO = null;
+		
+		try {
+			String tempUrl = uri.substring(0, uri.lastIndexOf("/"));
+			String seq = tempUrl.substring(tempUrl.lastIndexOf("/") + 1);
+			
+			uriDecodeVO = new URIDecodeVO();
+			uriDecodeVO.setName(uri.substring(uri.lastIndexOf("/") + 1));
+			uriDecodeVO.setSeq(seq);
+		} catch(IndexOutOfBoundsException ie) {
+			log.error("uri decode error : {}", ie.getMessage());
+		} catch(Exception e) {
+			log.error("uri decode error : {}", e.getMessage());
+		}
+		
+		return uriDecodeVO;
 	}
 }

@@ -33,7 +33,6 @@ public class NettyServerRunnable extends Thread {
 			nettyServer.service(handler, port, type);
 			
 		} catch(Exception e) {
-			log.error(e.getMessage());
 			for(StackTraceElement st : e.getStackTrace()) {
 				if(st.toString().startsWith("com.kdy")) {
 					log.error(st.toString());

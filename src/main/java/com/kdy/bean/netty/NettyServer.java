@@ -46,7 +46,6 @@ public class NettyServer {
 
 			b.bind(PORT).sync().channel().closeFuture().sync();
 		} catch (Exception e) {
-			log.error(e.getMessage());
 			for(StackTraceElement st : e.getStackTrace()) {
 				if(st.toString().startsWith("com.kdy")) {
 					log.error(st.toString());

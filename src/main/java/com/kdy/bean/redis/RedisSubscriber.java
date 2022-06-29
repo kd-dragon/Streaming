@@ -2,7 +2,6 @@ package com.kdy.bean.redis;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.connection.Message;
 import org.springframework.data.redis.connection.MessageListener;
@@ -12,21 +11,20 @@ import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kdy.dto.StreamPushVO;
 
+import lombok.RequiredArgsConstructor;
+
 @Component
+@RequiredArgsConstructor
 public class RedisSubscriber implements MessageListener {
 	
 	private final Logger logger = LoggerFactory.getLogger(RedisSubscriber.class);
 	
-	private final RedisTemplate<String, Object> redisTemplate;
-	private final ObjectMapper objectMapper;
-	private final RedisLiveCacheBean redisLiveCacheBean;
+	@Qualifier("redisPubsubTemplate")
+	private RedisTemplate<String, Object> redisTemplate;
 	
-	@Autowired
-	public RedisSubscriber(@Qualifier("redisPubsubTemplate") RedisTemplate<String, Object> redisTemplate, ObjectMapper objectMapper, RedisLiveCacheBean redisLiveCacheBean) {
-		this.redisTemplate = redisTemplate;
-		this.objectMapper = objectMapper;
-		this.redisLiveCacheBean = redisLiveCacheBean;
-	}
+	private final ObjectMapper objectMapper;
+	
+	private final RedisLiveCacheBean redisLiveCacheBean;
 	
 	/**
 	 * <메시지 Subscribe>

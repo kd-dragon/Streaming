@@ -45,11 +45,9 @@ public class RedisFileHandler implements FileHandlerInterface {
 		try {
 			
 			valueOperations = templateReplica1.opsForValue();
-			//log.warn("############# redis Key {}", key);
 			byte[] rtnBytes = valueOperations.get(liveKey);
 			
 			if(rtnBytes != null && rtnBytes.length > 0) {
-				//log.debug("RedisFileHandler >> getByteBuf() :: byte-length ===== " + rtnBytes.length);
 				buf = Unpooled.wrappedBuffer(rtnBytes);
 			} else {
 				valueOperations = template.opsForValue();
@@ -61,8 +59,6 @@ public class RedisFileHandler implements FileHandlerInterface {
 			}
 			
 		} catch(Exception e) {
-			//log.error("redis server error: \n{}", e);
-			
 			valueOperations = template.opsForValue();
 			byte[] rtnBytes = valueOperations.get(liveKey);
 			
